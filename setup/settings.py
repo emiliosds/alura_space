@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path, os
 from dotenv import load_dotenv
+from django.contrib.messages import constants as messages
 
 load_dotenv()
 
@@ -28,6 +29,14 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
 ALLOWED_HOSTS = []
 
 
@@ -41,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'galeria.apps.GaleriaConfig',
+    'usuarios.apps.UsuariosConfig',
 ]
 
 MIDDLEWARE = [
