@@ -1,0 +1,5 @@
+{% for message in messages %}
+<div class="alert {{ message.level_tag }}" role="alert">
+    <p>{{ message }}</p>
+</div>
+{% endfor %}

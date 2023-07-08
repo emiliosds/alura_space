@@ -1,10 +1,10 @@
-{% extends 'galeria/base.html' %}
+{% extends '_partials/_layout.html' %}
 {% load static %}
 {% block content %}
 <div class="pagina-inicial">
-    {% include 'galeria/partials/_header.html' %}
+    {% include '_partials/_header.html' %}
     <main class="principal">
-        {% include 'galeria/partials/_menu.html' %}
+        {% include '_partials/_menu.html' %}
         <section class="conteudo">
             <section class="banner">
                 <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png'%}" alt="banner Alura Space">

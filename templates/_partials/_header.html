@@ -1,6 +1,7 @@
 {% load static %}
 <header class="cabecalho">
     <img src="{% static '/assets/logo/Logo(2).png'%}" alt="Logo da Alura Space" />
+    {% include '_partials/_alert.html' %}   
     <div class="cabecalho__busca">
         <div class="busca__fundo">
             <form action="{% url 'buscar' %}">
