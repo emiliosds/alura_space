@@ -1,6 +1,6 @@
 from django import forms
 
-class CadastroForms(forms.Form):
+class CadastrarForms(forms.Form):
     nome=forms.CharField(
         label='Nome de Cadastro', 
         required=True, 

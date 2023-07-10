@@ -10,7 +10,7 @@
     <main class="principal">
         {% include '_shared/_menu.html' %}
         <section style="margin-left: 5em">
-            <form action="{% url 'usuario/login' %}" method="POST">
+            <form action="{% url 'usuario/cadastrar' %}" method="POST">
                 {% csrf_token %}
                 <div class="row">
                     {% for field in form.visible_fields %}
@@ -19,10 +19,15 @@
                             style="color:#D9D9D9; margin-bottom: 5px;">{{field.label}}</label>
                         {{ field }}
                     </div>
+                    {% for error in field.errors %}
+                    <div class="form-feedback-alert">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
                     {% endfor %}
                 </div>
                 <div>
-                    <button class="btn btn-success col-12" style="padding: top 5px;">Login</button>
+                    <button class="btn btn-success col-12" style="padding: top 5px;">Cadastrar</button>
                 </div>
             </form>
         </section>
