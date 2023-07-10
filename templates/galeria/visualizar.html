@@ -1,15 +1,19 @@
-{% extends '_partials/_layout.html' %}
+{% extends '_shared/_layout.html' %}
 {% load static %}
+{% block style %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+{% endblock %}
 {% block content %}
 <div class="pagina-inicial">
-    {% include '_partials/_header.html' %}
+    {% include '_shared/_header.html' %}
     <main class="principal">
-        {% include '_partials/_menu.html' %}
+        {% include '_shared/_menu.html' %}
         <section class="conteudo">
             <section class="imagem">
                 <div class="imagem__conteudo">
                     {% if fotografia.foto == "" or fotografia.foto == null %}
-                        <img class="imagem__imagem" src="{% static '/assets/imagens/galeria/not-found.png'%}" alt="foto">
+                        <img class="imagem__imagem" src="{% static 'assets/imagens/galeria/not-found.png'%}" alt="foto">
                     {% else %}
                         <img class="imagem__imagem" src="{{ fotografia.foto.url }}" alt="foto">
                     {% endif %}
@@ -18,6 +22,10 @@
                             <p class="imagem__titulo">{{ fotografia.nome }}</p>
                             <p class="imagem__descricao">{{ fotografia.legenda }}</p>
                             <p class="imagem__texto">{{ fotografia.descricao }}</p>
+                        </div>
+                        <div>
+                            <a href="{% url 'galeria/editar' fotografia.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Editar</button></a>
+                            <a href="{% url 'galeria/excluir' fotografia.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Excluir</button></a>
                         </div>
                     </div>
                 </div>

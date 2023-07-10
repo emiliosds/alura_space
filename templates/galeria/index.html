@@ -1,22 +1,23 @@
-{% extends '_partials/_layout.html' %}
+{% extends '_shared/_layout.html' %}
 {% load static %}
 {% block content %}
 <div class="pagina-inicial">
-    {% include '_partials/_header.html' %}
+    {% include '_shared/_header.html' %}
     <main class="principal">
-        {% include '_partials/_menu.html' %}
+        {% include '_shared/_menu.html' %}
         <section class="conteudo">
             <section class="banner">
-                <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png'%}" alt="banner Alura Space">
+                <img class="banner__imagem" src="{% static 'assets/imagens/Banner(2).png'%}" alt="banner Alura Space">
                 <h1 class="banner__titulo"> A galeria mais completa de fotos do espaço!</h1>
             </section>
             <section class="tags">
                 <p class="tags__titulo">Busque por tags:</p>
                 <ul class="tags__lista">
-                    <li class="tags__tag">Nebulosa</li>
-                    <li class="tags__tag">Estrela</li>
-                    <li class="tags__tag">Galáxia</li>
-                    <li class="tags__tag">Planeta</li>
+                    <li class="tags__tag"><a href="{% url 'galeria/filtrar' 'NEBULOSA' %}" class="btn" style="color:#c9c9c9">Nebulosa</a></li>
+                    <li class="tags__tag"><a href="{% url 'galeria/filtrar' 'ESTRELA' %}" class="btn" style="color:#c9c9c9">Estrela</a></li>
+                    <li class="tags__tag"><a href="{% url 'galeria/filtrar' 'GALAXIA' %}" class="btn" style="color:#c9c9c9">Galáxia</a></li>
+                    <li class="tags__tag"><a href="{% url 'galeria/filtrar' 'BURACO NEGRO' %}" class="btn" style="color:#c9c9c9">Buraco Negro</a></li>
+                    <li class="tags__tag"><a href="{% url 'galeria/filtrar' 'PLANETA' %}" class="btn" style="color:#c9c9c9">Planeta</a></li>
                 </ul>
             </section>
             <section class="galeria">
@@ -26,9 +27,9 @@
                     {% for fotografia in cards %}
                     <ul class="cards__lista">
                         <li class="card">
-                            <a href="{% url 'imagem' fotografia.id %}">
+                            <a href="{% url 'galeria/visualizar' fotografia.id %}">
                                 {% if fotografia.foto == "" or fotografia.foto == null %}
-                                <img class="card__imagem" src="{% static '/assets/imagens/galeria/not-found.png'%}"
+                                <img class="card__imagem" src="{% static 'assets/imagens/galeria/not-found.png'%}"
                                     alt="foto">
                                 {% else %}
                                 <img class="card__imagem" src="{{ fotografia.foto.url }}" alt="foto">
@@ -40,7 +41,7 @@
                                 <div class="card__texto">
                                     <p class="card__descricao">{{ fotografia.legenda }}</p>
                                     <span>
-                                        <img src="{% static '/assets/ícones/1x/favorite_outline.png'%}"
+                                        <img src="{% static 'assets/ícones/1x/favorite_outline.png'%}"
                                             alt="ícone de coração">
                                     </span>
                                 </div>
